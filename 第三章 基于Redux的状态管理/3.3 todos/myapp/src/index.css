@@ -107,16 +107,13 @@ body {
   border-bottom: 0;
 }
 
-#todo-list .editing .display,
-#todo-list .edit {
-  display: none;
-}
 
-#todo-list .editing .edit {
+
+#todo-list  .edit {
   display: block;
 }
 
-#todo-list .editing input {
+#todo-list  .todo-input {
   width: 444px;
   font-size: 24px;
   font-family: inherit;
@@ -127,6 +124,9 @@ body {
   padding: 10px 7px 0px 27px;
   border: 1px solid #999999;
   box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+
+  position: absolute;
+    top: 0px;
 }
 
 #todo-list .check {
