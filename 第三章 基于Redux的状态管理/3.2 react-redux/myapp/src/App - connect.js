@@ -1,23 +1,31 @@
-import React from 'react';
-import {connect} from "react-redux";
+import React from "react";
+import { connect } from "react-redux";
 function App(props) {
-  let {count,dispatch} = props;
+  let { count, dispatch } = props;
   return (
     <div>
-      <button onClick={()=>{
+      <button
+        onClick={() => {
           dispatch({
-            type:"COUNT_REDUCE"
+            type: "COUNT_REDUCE",
           });
-        }}>-</button>
-        <span>{count}</span>
-        <button onClick={()=>{
+        }}
+      >
+        -
+      </button>
+      <span>{count}</span>
+      <button
+        onClick={() => {
           dispatch({
-            type:"COUNT_PLUS"
+            type: "COUNT_PLUS",
           });
-        }}>+</button>  
+        }}
+      >
+        +
+      </button>
     </div>
   );
 }
 
-App = connect(state=>state)(App);
+App = connect((state) => state)(App);
 export default App;
