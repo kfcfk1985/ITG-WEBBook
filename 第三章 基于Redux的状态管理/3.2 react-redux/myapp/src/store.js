@@ -1,3 +1,5 @@
+//! 输入store，快速创见模板（需安装：React/Redux/react-router Snippets）
+
 import { createStore } from "redux";
 
 function countFn(
