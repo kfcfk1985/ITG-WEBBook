@@ -14,6 +14,7 @@ function Li(props) {
     }
   }, [isEdit]);
 
+  console.log("Li run", isEdit); //! 虽然每次setState后函数式组件重新运行，但useState的数据是有记录的
   return (
     <li>
       <div className={"todo " + (done ? "done" : "")}>
@@ -22,12 +23,12 @@ function Li(props) {
           <input
             className="check"
             type="checkbox"
-            checked={done}
+            checked={done} //! 在  <input type="checkbox"/>中，传递值进去也是用 checked
             onChange={({ target }) => {
               dispatch({
                 type: "TODO_DONE",
                 id,
-                done: target.checked,
+                done: target.checked, //!在  <input type="checkbox"/>中，onChange事件获取值的地方为 event.target.checked
               });
             }}
           />

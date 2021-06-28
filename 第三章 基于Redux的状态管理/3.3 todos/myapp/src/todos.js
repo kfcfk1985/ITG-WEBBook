@@ -7,6 +7,7 @@ function Todos() {
   return (
     <ul id="todo-list">
       {data.map((item) => (
+        // ! {...item}  <==  等效  ==>  id = {item.id}   title= {item.title}   done = {item.done}
         <Li key={item.id} {...item} />
       ))}
     </ul>

@@ -14,7 +14,7 @@ function Create() {
         type="text"
         value={val}
         onChange={({ target }) => {
-          setVal(target.value); //! 一旦运行这里，这个函数式组件将会重新运行
+          setVal(target.value); //! 一旦运行这里，这个函数式组件将会重新运行。但 useState创建的变量，是有记录的
         }}
         //! onkeydown 事件会在用户按下一个键盘按键时发生。
         onKeyDown={({ keyCode }) => {
