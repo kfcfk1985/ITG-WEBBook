@@ -9,6 +9,8 @@ let routes = [
   {
     path: "/",
     exact: true,
+
+    //! 优先级 children > component > render
     render(props) {
       //!render方式的路由渲染，要手动传递参数给组件，才能收到history，location，match等对象。
       return <IndexView {...props} />;

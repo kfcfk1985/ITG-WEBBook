@@ -1,8 +1,8 @@
 //!ok1
 import React from "react";
 import List from "@/component/list";
-import Pagation from "@/component/pagation"; //! useParams 是从react-router-dom导出的
-import { useParams } from "react-router-dom";
+import Pagation from "@/component/pagation";
+import { useParams } from "react-router-dom"; //! useParams 是从react-router-dom导出的
 import data from "@/data/data";
 const pageLength = Math.ceil(data.length / 3); //! 计算有多小个页面。ceil() 方法可对一个数进行上舍入。
 export default function ListView() {
