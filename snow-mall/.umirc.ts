@@ -1,6 +1,8 @@
 import { defineConfig } from 'umi';
 
 export default defineConfig({
+  mfsu: {},
+
   title: '这是个商城',
   nodeModulesTransform: {
     type: 'none',
