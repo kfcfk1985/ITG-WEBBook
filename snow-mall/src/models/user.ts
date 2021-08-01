@@ -59,6 +59,19 @@ function queryCurrentMock() {
     userid: '001',
   };
 }
+function queryCurrentMock2() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve({
+        status: 1,
+        name: '莎士比亚',
+        icon:
+          'https://tva1.sinaimg.cn/large/00831rSTly1gdm7eok2oij301s01sgli.jpg',
+        userid: '001',
+      });
+    }, 2000);
+  });
+}
 
 const UserModel: UserModelType = {
   namespace: 'user',
@@ -72,7 +85,7 @@ const UserModel: UserModelType = {
   //! eﬀect 是一个 javascript 对象，里面包含描述副作用的信息。(相当于 vuex 中的 Action)
   effects: {
     *fetchCurrent(_, { fork, call, put }) {
-      //! fork 是无阻塞型调用.它会将任务启动并且不阻塞代码的执行，fork会返回一个task，可以用cancel（task）来取消任务（所以不能接收任务的返回值）
+      //! fork 无阻塞型调用.（类似创建另一个进程，和setTimeout类似）它会将任务启动并且不阻塞代码的执行，fork会返回一个task，可以用cancel（task）来取消任务（所以不能接收任务的返回值）
       //! call 是阻塞型调用，即call是有阻塞地调用返回值为 promise 的函数或一般的函数
       const response = yield call(queryCurrent); //! call 调用  promise 的函数（进行异步操作 ）
       // const response = yield call(queryCurrentMock); //! call 调用 一般的函数

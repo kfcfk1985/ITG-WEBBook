@@ -4,6 +4,13 @@ export interface CountModelState {
   num: number;
 }
 
+interface CountAction {
+  type: string;
+  playload: {
+    step: number;
+  };
+}
+
 export interface CountModelType {
   namespace: 'count';
   state: CountModelState;
@@ -12,7 +19,7 @@ export interface CountModelType {
     sub: Effect;
   };
   reducers: {
-    addDo: Reducer<CountModelState>;
+    addDo: Reducer<CountModelState, CountAction>;
     subDo: Reducer<CountModelState>;
   };
 }
@@ -29,27 +36,30 @@ const CountModel: CountModelType = {
     num: 0,
   },
   effects: {
-    *add(_, { fork, call, put }) {
+    *add(action, { fork, call, put }) {
+      console.log('action', action);
       const response = yield call(delay); //! call 调用  promise 的函数（进行异步操作 ）
 
-      yield put({
+      yield put<CountAction>({
         type: 'addDo',
+        playload: action.payload,
       });
     },
-    *sub(_, { fork, call, put }) {
+    *sub(action, { fork, call, put }) {
       const response = yield call(delay);
 
-      yield put({
+      yield put<CountAction>({
         type: 'subDo',
+        playload: action.payload,
       });
     },
   },
   reducers: {
     addDo(state, action) {
-      return { num: (state?.num || 0) + 1 };
+      return { num: (state?.num || 0) + action.playload.step };
     },
     subDo(state, action) {
-      return { num: (state?.num || 0) - 1 };
+      return { num: (state?.num || 0) - action.playload.step };
     },
   },
 };
